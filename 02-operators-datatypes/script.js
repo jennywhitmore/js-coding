@@ -7,10 +7,10 @@ console.log("Hallo");
 console.log("That doesn't work");
 
 // should return true. Change only the operator to fix it.
-console.log(50 + 2 == 52);
+console.log(50 + 2 === 52);
 
 // should be false. Change only the operator to fix it.
-console.log("333" != 333);
+console.log("333" === 333);
 
 // Wrong result: Expected 555 not 855. Change only the operator to fix it.
 console.log((600 + 510) / 2);
@@ -24,4 +24,4 @@ console.log(25 / 5); // Result: 5
 console.log(50 / 10); // Result: 5
 
 console.log(25 / 5 == 50 / 10);
-console.log(25 / 5 && 50 / 10 === 5);
+console.log(25 / 5) && 50 / 10 === 5;
