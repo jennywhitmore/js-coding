@@ -73,10 +73,10 @@ console.log(addPositive(-1, -8));
 using the build-in function math.abs to turn the negative number into an absolute number. 
 The absolute value of a number is its value without regard to its sign.*/
 
-function addPositive2(x, y) {
-  let xBePositiv = Math.abs(x);
-  let yBePositive = Math.abs(y);
-  let sum = xBePositiv + yBePositive;
+function addPositive2(num1, num2) {
+  let num1ToPositiv = Math.abs(num1);
+  let num2ToPositive = Math.abs(num2);
+  let sum = num1ToPositiv + num2ToPositive;
   return sum;
 }
 console.log("-------Task 3 - Option 2 Results:");
