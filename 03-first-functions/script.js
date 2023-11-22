@@ -54,14 +54,14 @@ result2 should be 9 */
 //_______________________________________________________________________________//
 
 //option 1//
-function addPositive(x, y) {
-  if (x < 0) {
-    x = x * -1;
+function addPositive(num1, num2) {
+  if (num1 < 0) {
+    num1 = num1 * -1;
   }
-  if (y < 0) {
-    y = y * -1;
+  if (num2 < 0) {
+    num2 = num2 * -1;
   }
-  let sum = x + y;
+  let sum = num1 + num2;
   return sum;
 }
 console.log("-------Task 3 - Option 1 Results:");
