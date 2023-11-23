@@ -7,7 +7,7 @@ let userName = "Brad";
 userName = "Jenna";
 
 function getUserNameLength(userName) {
-  let result = userName.length;
+  const result = userName.length;
   return result;
 }
 
