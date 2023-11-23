@@ -70,7 +70,7 @@ console.log(charCount("Resümee", "e"));
 //_______________________________________________________________________________//
 
 function charCount(word, char) {
-  if (char.lenght > 1) {
+  if (char.length > 1) {
     // does not work. with the !== it does not work either. I have no clue.
     //check if char longer than 1 character
     return "Invalid input. Please only enter one char.";
