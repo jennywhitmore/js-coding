@@ -85,3 +85,41 @@ function abbrevName(name) {
   let names = name.split(" ");
   return names[0][0].toUpperCase() + "." + names[1][0].toUpperCase();
 }
+
+/**********************************************************/
+// Find Lowest Number //
+/**********************************************************/
+
+const arr = [34, 15, 88, 2];
+
+function sort(a, b) {
+  return a - b;
+}
+
+const arrSorted = arr.sort(sort);
+return arrSorted[0];
+
+/**********************************************************/
+// Tribonacci //
+/**********************************************************/
+
+function tribonacci(signature, n) {
+  let signatureOriginal = signature;
+  let signatureCopy = signature.join(", ");
+  let turns = n - 3;
+
+  if (turns > 0) {
+    for (let i = 0; i < turns; i++) {
+      let sumSig =
+        signatureOriginal[0] + signatureOriginal[1] + signatureOriginal[2];
+      signatureCopy += ", " + sumSig;
+      signatureOriginal.push(sumSig);
+      signatureOriginal.shift();
+    }
+    return signatureCopy;
+  } else if (turns == -3) {
+    return [];
+  } else {
+    return [1];
+  }
+}
