@@ -123,3 +123,48 @@ function tribonacci(signature, n) {
     return [1];
   }
 }
+
+/**********************************************************/
+// Sum of differences in array //
+/**********************************************************/
+
+function sumOfDifferences(arr) {
+  if (arr.length > 1) {
+    function sort(a, b) {
+      return a - b;
+    }
+    const arrSorted = arr.sort(sort).reverse();
+    const calc = arrSorted[0] - arrSorted[1] + (arrSorted[1] - arrSorted[2]);
+    return calc;
+  } else {
+    return 0 + "(Nothing in Haskell, None in Rust)";
+  }
+}
+
+/**********************************************************/
+// Sum arrays //
+/**********************************************************/
+function sum(numbers) {
+  "use strict";
+  let sumUp = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sumUp += numbers[i];
+  }
+  return sumUp;
+}
+
+/**********************************************************/
+// Merge two sorted arrays into one //
+/**********************************************************/
+
+function mergeArrays(arr1, arr2) {
+  const arrMerged = arr1.concat(arr2);
+  const arr3 = [...new Set(arrMerged)];
+
+  function sortNumbers(a, b) {
+    return a - b;
+  }
+
+  const arrMergedSorted = arr3.sort(sortNumbers);
+  return arr3;
+}
