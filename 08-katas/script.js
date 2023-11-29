@@ -116,11 +116,15 @@ function tribonacci(signature, n) {
       signatureOriginal.push(sumSig);
       signatureOriginal.shift();
     }
-    return signatureCopy;
-  } else if (turns == -3) {
+    return signatureCopy.split(", ").map(Number);
+  } else if (turns === -3) {
     return [];
   } else {
-    return [1];
+    let result = [];
+    for (let index = 0; index < n; index++) {
+      result.push(signature[index]);
+    }
+    return result;
   }
 }
 
@@ -167,4 +171,180 @@ function mergeArrays(arr1, arr2) {
 
   const arrMergedSorted = arr3.sort(sortNumbers);
   return arr3;
+}
+
+/**********************************************************/
+// Counting Sheep //
+/**********************************************************/
+
+function countSheeps(sheep) {
+  let sheepHere = 0;
+  for (i = 0; i < sheep.length; i++) {
+    if (sheep[i] === true) {
+      sheepHere++;
+    }
+  }
+  return sheepHere;
+}
+
+/**********************************************************/
+// Opposite number //
+/**********************************************************/
+
+function opposite(number) {
+  if (number === 0) {
+    return number;
+  } else {
+    let oppNum = number * -1;
+    return oppNum;
+  }
+}
+
+/**********************************************************/
+// Sum of positive //
+/**********************************************************/
+
+function positiveSum(arr) {
+  let sumUp = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      sumUp += arr[i];
+    }
+  }
+  return sumUp;
+}
+
+/**********************************************************/
+// return negative //
+/**********************************************************/
+
+function makeNegative(num) {
+  if (num <= 0) {
+    return num;
+  } else {
+    let oppNum = num * -1;
+    return oppNum;
+  }
+}
+
+/**********************************************************/
+// number of people in the bus //
+/**********************************************************/
+
+var number = function (busStops) {
+  let hopOn = 0;
+  let hopOff = 0;
+
+  for (let i = 0; i < busStops.length; i++) {
+    hopOn += busStops[i][0];
+  }
+  for (let i = 1; i < busStops.length; i++) {
+    hopOff += busStops[i][1];
+  }
+  return hopOn - hopOff;
+};
+//console.log(number([[10,0],[3,5],[5,8]]),5);
+
+//Alternative solution (clever)
+
+var number = function (busStops) {
+  var totalPeople = 0;
+  for (var i = 0; i < busStops.length; i++) {
+    totalPeople += busStops[i][0];
+    totalPeople -= busStops[i][1];
+  }
+  return totalPeople;
+};
+
+/**********************************************************/
+// reversed strings //
+/**********************************************************/
+
+function solution(str) {
+  return str.split("").reverse().join("");
+}
+
+/**********************************************************/
+// even numbers in an array //
+/**********************************************************/
+
+function evenNumbers(array, number) {
+  let lastEvens = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (array[i] % 2 === 0 && lastEvens.length < number) {
+      lastEvens.unshift(array[i]);
+    }
+  }
+  return lastEvens;
+}
+
+//console.log(evenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9], 3), [4, 6, 8]);
+
+/**********************************************************/
+// Get the Middle Character //
+/**********************************************************/
+
+function getMiddle(s) {
+  let split = Math.floor(s.length / 2);
+
+  if (s.length % 2 === 0) {
+    return s[split - 1] + s[split];
+  } else if (s.length % 2 !== 0) {
+    return s[split];
+  } else if (s.lenght === 1) {
+    return s;
+  }
+}
+
+/**********************************************************/
+// Isograms //
+/**********************************************************/
+
+function isIsogram(str) {
+  for (let i = 0; i < str.length - 1; i++) {
+    for (let j = i + 1; j < str.length; j++) {
+      if (str[i].toLowerCase() === str[j].toLowerCase()) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+/**********************************************************/
+// Vowel Count //
+/**********************************************************/
+
+function getCount(str) {
+  const strCopy = str.toLowerCase().split("");
+  let count = 0;
+  for (let i = 0; i < strCopy.length; i++) {
+    if (
+      strCopy[i] === "a" ||
+      strCopy[i] === "e" ||
+      strCopy[i] === "i" ||
+      strCopy[i] === "o" ||
+      strCopy[i] === "u"
+    ) {
+      count++;
+    }
+  }
+  return count;
+}
+
+//alternative solution:
+
+function getCount(str) {
+  var vowelsCount = 0;
+  var vowels = ["a", "e", "i", "o", "u"];
+  for (var i = 0; i < str.length; i++) {
+    for (var j = 0; j < vowels.length; j++) {
+      if (str[i] === vowels[j]) {
+        vowelsCount++;
+      }
+    }
+  }
+
+  return vowelsCount;
 }
