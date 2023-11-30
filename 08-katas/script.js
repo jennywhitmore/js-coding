@@ -179,7 +179,7 @@ function mergeArrays(arr1, arr2) {
 
 function countSheeps(sheep) {
   let sheepHere = 0;
-  for (i = 0; i < sheep.length; i++) {
+  for (let i = 0; i < sheep.length; i++) {
     if (sheep[i] === true) {
       sheepHere++;
     }
@@ -347,4 +347,154 @@ function getCount(str) {
   }
 
   return vowelsCount;
+}
+
+/**********************************************************/
+// Friend or Foe? //
+/**********************************************************/
+
+function friend(friends) {
+  let myFriend = [];
+  for (let i = 0; i < friends.length; i++) {
+    if (friends[i].length === 4) {
+      myFriend.push(friends[i]);
+    }
+  }
+  return myFriend;
+}
+//console.log(friend(["Ryan", "Kieran", "Mark"]), ["Ryan", "Mark"])
+
+/**********************************************************/
+// String repeat //
+/**********************************************************/
+
+function repeatStr(n, s) {
+  return s.repeat(n);
+}
+
+/**********************************************************/
+// Descending Order //
+/**********************************************************/
+
+function descendingOrder(n) {
+  return parseInt(n.toString().split("").sort().reverse().join(""));
+}
+
+/*
+  1. Convert number n to string --> toString()
+  2. Convert and split into an array of digits --> split('')
+  3. Sort the array in Ascending order --> sort()
+  4. Change the sorting order to Descending --> reverse()
+  5. Convert the array back to a string --> join("")
+  */
+
+/**********************************************************/
+// Mumbling //
+/**********************************************************/
+
+function accum(s) {
+  let sUp = s.toUpperCase().split("");
+  let sLow = s.toLowerCase().split("");
+
+  let index = 1;
+  let result = "";
+
+  for (let i = 0; i < sUp.length; i++) {
+    let firstChar = sUp[i];
+    let charsXi = sLow[i].repeat(index - 1);
+    result += firstChar + charsXi + "-";
+    index++;
+  }
+  return result.slice(0, -1);
+}
+
+/**********************************************************/
+// Credit Card Mask //
+/**********************************************************/
+
+// return masked string
+function maskify(cc) {
+  const mask = "#";
+  let maskedString = mask.repeat(cc.length - 4) + cc.slice(-4);
+  return maskedString;
+}
+
+/**********************************************************/
+// Remove First and Last Character //
+/**********************************************************/
+function removeChar(str) {
+  return str.slice(1, -1);
+}
+
+/**********************************************************/
+// Alphabet war//
+/**********************************************************/
+
+function alphabetWar(fight) {
+  const leftSidePower = {
+    w: 4,
+    p: 3,
+    b: 2,
+    s: 1,
+  };
+
+  const rightSidePower = {
+    m: 4,
+    q: 3,
+    d: 2,
+    z: 1,
+  };
+
+  let leftScore = 0;
+  let rightScore = 0;
+
+  for (let i = 0; i < fight.length; i++) {
+    let letter = fight[i];
+    if (leftSidePower[letter]) {
+      leftScore += leftSidePower[letter];
+    } else if (rightSidePower[letter]) {
+      rightScore += rightSidePower[letter];
+    }
+  }
+  if (leftScore > rightScore) {
+    return "Left side wins!";
+  } else if (leftScore < rightScore) {
+    return "Right side wins!";
+  } else {
+    return "Let's fight again!";
+  }
+}
+
+//Alternative Solution
+
+function alphabetWar(fight) {
+  var right = {};
+  right["m"] = 4;
+  right["q"] = 3;
+  right["d"] = 2;
+  right["z"] = 1;
+  var left = {};
+  left["w"] = 4;
+  left["p"] = 3;
+  left["b"] = 2;
+  left["s"] = 1;
+
+  var sumRight = 0;
+  var sumLeft = 0;
+
+  for (i in fight) {
+    if (right[fight[i]]) {
+      sumRight += right[fight[i]];
+    }
+    if (left[fight[i]]) {
+      sumLeft += left[fight[i]];
+    }
+  }
+  if (sumRight > sumLeft) {
+    return "Right side wins!";
+  }
+  if (sumRight < sumLeft) {
+    return "Left side wins!";
+  }
+  return "Let's fight again!";
 }
