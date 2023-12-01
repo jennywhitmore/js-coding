@@ -498,3 +498,40 @@ function alphabetWar(fight) {
   }
   return "Let's fight again!";
 }
+
+/**********************************************************/
+// Credit Card Mask//
+/**********************************************************/
+
+// return masked string
+function maskify(cc) {
+  if (cc.length < 4) {
+    return cc;
+  }
+  const mask = "#";
+  let maskedString = mask.repeat(cc.length - 4) + cc.slice(-4);
+  return maskedString;
+}
+
+/**********************************************************/
+// Remove first and last letter//
+/**********************************************************/
+
+function removeChar(str) {
+  let removeFirst = str.substring(1);
+  return removeFirst.slice(0, -1);
+}
+
+/**********************************************************/
+// Remove first and last letter//
+/**********************************************************/
+function highAndLow(numbers) {
+  const toArr = numbers.split(" ").map(Number); // Split the input string, convert to numbers
+
+  const sortedArr = toArr.sort((a, b) => a - b); // Sort the array in ascending order
+
+  const highest = sortedArr[sortedArr.length - 1]; // Get the highest number
+  const lowest = sortedArr[0]; // Get the lowest number
+
+  return `${highest} ${lowest}`; // Return the highest and lowest numbers separated by a space
+}
