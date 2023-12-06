@@ -12,21 +12,30 @@ const stringToNumber = function (str) {
 // CHECK SAME CASE //
 /**********************************************************/
 
-function sameCase(a, b){
+function sameCase(a, b) {
   function containsNonLetterChars(str) {
     return /[^A-Za-z]/.test(str);
   }
 
-  if (typeof a === "string" && typeof b === "string" && !containsNonLetterChars(a) && !containsNonLetterChars(b)) { 
+  if (
+    typeof a === "string" &&
+    typeof b === "string" &&
+    !containsNonLetterChars(a) &&
+    !containsNonLetterChars(b)
+  ) {
     const upperA = a.toUpperCase();
     const upperB = b.toUpperCase();
     const lowerA = a.toLowerCase();
     const lowerB = b.toLowerCase();
 
-    if ((upperA === a && upperB === b) || (lowerA === a && lowerB === b)){
+    if ((upperA === a && upperB === b) || (lowerA === a && lowerB === b)) {
       return 1;
-    } else if ((upperA === a && lowerB === b) || (lowerA === a && upperB === b) ||
-               (upperB === b && lowerA === a) || (lowerB === b && upperA === a)){
+    } else if (
+      (upperA === a && lowerB === b) ||
+      (lowerA === a && upperB === b) ||
+      (upperB === b && lowerA === a) ||
+      (lowerB === b && upperA === a)
+    ) {
       return 0;
     } else {
       return -1;
@@ -35,8 +44,6 @@ function sameCase(a, b){
     return -1;
   }
 }
-
-
 
 /**********************************************************/
 // NARCISSISTIC NUMBER //
@@ -650,100 +657,96 @@ function sc(said, suspects) {
 /**********************************************************/
 
 function digitize(n) {
-  return n.toString().split('').reverse().map(Number);
-  }
+  return n.toString().split("").reverse().map(Number);
+}
 
 /**********************************************************/
 //So Many Permutations!//
 /**********************************************************/
 
-  function permutations(string) {
-    let results = [];
-  
-    if (string.length === 1) {
-      return [string];
-    }
-  
-    for (let i = 0; i < string.length; i++) {
-      let firstChar = string[i];
-      let charsLeft = string.substring(0, i) + string.substring(i + 1);
-      let innerPermutations = permutations(charsLeft);
-  
-      for (let j = 0; j < innerPermutations.length; j++) {
-        results.push(firstChar + innerPermutations[j]);
-      }
-    }
-  
-    return Array.from(new Set(results));
+function permutations(string) {
+  let results = [];
+
+  if (string.length === 1) {
+    return [string];
   }
+
+  for (let i = 0; i < string.length; i++) {
+    let firstChar = string[i];
+    let charsLeft = string.substring(0, i) + string.substring(i + 1);
+    let innerPermutations = permutations(charsLeft);
+
+    for (let j = 0; j < innerPermutations.length; j++) {
+      results.push(firstChar + innerPermutations[j]);
+    }
+  }
+
+  return Array.from(new Set(results));
+}
 
 /**********************************************************/
 //Find the position!//
 /**********************************************************/
 
-  Find the position!
-  function position(letter){
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    const position = alphabet.indexOf(letter)+1
-    return "Position of alphabet: " + position;
-    }
-
+function position(letter) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const position = alphabet.indexOf(letter) + 1;
+  return "Position of alphabet: " + position;
+}
 
 /**********************************************************/
 //String incrementer//
 /**********************************************************/
 
-    function incrementString (strng) {
-      //get the chars//
-      let chars = strng.replace(/[0-9]*$/, ''); 
-      
-      //get the numbers//
-      let numPart = strng.slice(chars.length);
-    
-      // If there are no numbers, append 1 to the end of the string//
-      if (numPart === '') {
-        return strng + '1';
-      }
-    
-      // Increment the number part
-      let num = parseInt(numPart); // Convert the number part to an integer
-      num++; // Increment the number
-      let numStr = num.toString(); // Convert the incremented number back to a string
-    
-      // Pad the number part with leading zeros if needed
-      while (numStr.length < numPart.length) {
-        numStr = '0' + numStr;
-      }
-    
-      return chars + numStr; // Return the new string
-    }
+function incrementString(strng) {
+  //get the chars//
+  let chars = strng.replace(/[0-9]*$/, "");
+
+  //get the numbers//
+  let numPart = strng.slice(chars.length);
+
+  // If there are no numbers, append 1 to the end of the string//
+  if (numPart === "") {
+    return strng + "1";
+  }
+
+  // Increment the number part
+  let num = parseInt(numPart); // Convert the number part to an integer
+  num++; // Increment the number
+  let numStr = num.toString(); // Convert the incremented number back to a string
+
+  // Pad the number part with leading zeros if needed
+  while (numStr.length < numPart.length) {
+    numStr = "0" + numStr;
+  }
+
+  return chars + numStr; // Return the new string
+}
 
 /***********************************************************************/
 //Looking for vowels in a number array and take them out into new array//
 /**********************************************************************/
 
-    function isVow(a){
-      const a2String = a.toString();
-      const vowels = a2String.match(/[aeiou]/g);
-        if (vowels != null){
-          return vowels;
-        }
-        else {
-        return a;
-        }
-      return vowels;
-    }
+function isVow(a) {
+  const a2String = a.toString();
+  const vowels = a2String.match(/[aeiou]/g);
+  if (vowels != null) {
+    return vowels;
+  } else {
+    return a;
+  }
+  return vowels;
+}
 
-    //const a = [118,"u",120,121,"u",98,122,"a",120,106,104,116,113,114,113,120,106]
-
+//const a = [118,"u",120,121,"u",98,122,"a",120,106,104,116,113,114,113,120,106]
 
 /***********************************************************************/
 //Is there a vowel in there? (convert numbers into letters via ascii code)//
 /**********************************************************************/
 
 function isVow(a) {
-  const result = a.map(function(element){
-    if (typeof element === 'number' && element >= 97 && element <= 122) {
+  const result = a.map(function (element) {
+    if (typeof element === "number" && element >= 97 && element <= 122) {
       const char = String.fromCharCode(element);
       if (/[aeiou]/.test(char)) {
         return char;
@@ -759,58 +762,54 @@ function isVow(a) {
 /**********************************************************************/
 
 function countPositivesSumNegatives(input) {
-  if (input === null || input.length === 0){
+  if (input === null || input.length === 0) {
     return [];
   }
-  
+
   let countPositives = 0;
   let sumNegatives = 0;
 
-    for (let i = 0; i<input.length; i++){
-     if (input[i] > 0){
-       countPositives++;
-     }
-      else if (input[i]<=0){
-       sumNegatives += input[i];
-      }
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] > 0) {
+      countPositives++;
+    } else if (input[i] <= 0) {
+      sumNegatives += input[i];
     }
+  }
   let result = [countPositives, sumNegatives];
   return result;
 }
- //console.log(countPositivesSumNegatives([0, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]));
+//console.log(countPositivesSumNegatives([0, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]));
 
-
- /***********************************************************************/
+/***********************************************************************/
 //Fake Binary//
 /**********************************************************************/
 
- function fakeBin(x) {
+function fakeBin(x) {
   const regex = /[0-4]/g; //g means global and will then iterate through all in x not only the first find
   return x.toString().replace(regex, "0").replace(/[5-9]/g, "1");
 }
 
-
- /***********************************************************************/
+/***********************************************************************/
 //Sum of positive//
 /**********************************************************************/
 
 function positiveSum(arr) {
-  
-  if (arr.length === 0){
+  if (arr.length === 0) {
     return 0;
-    }
-  
+  }
+
   let sum = 0;
-  
-  for (let i=0; i<arr.length; i++){
-    if (arr[i]>=0){
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= 0) {
       sum += arr[i];
     }
   }
   return sum;
 }
 
- /***********************************************************************/
+/***********************************************************************/
 //Moving Zeros To The End//
 /**********************************************************************/
 
